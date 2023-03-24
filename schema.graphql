@@ -1,0 +1,15 @@
+type Account @entity { 
+  id: ID!
+}
+
+type DelegatorReward @entity {
+  id: ID!
+  blockHeight: BigInt!
+  txHash: String!
+  delegatorAddress: String!
+  validatorAddress: String!
+  denomination: String!
+  amount: BigInt!
+  payer: String!
+  granter: String!
+}
