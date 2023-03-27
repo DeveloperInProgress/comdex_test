@@ -22,14 +22,23 @@ network:
   # Optionally provide the HTTP endpoint of a full chain dictionary to speed up processing
   #dictionary: "https://api.subquery.network/sq/subquery/injective-hub-dictionary"
   chainTypes: # This is a beta feature that allows support for any Cosmos chain by importing the correct protobuf messages
-    #comdex.liquidity.v1beta1.MsgMarketOrder:
-    #  file: ./proto/comdex/liquidity/v1beta1/tx.proto
-    #  messages:
-    #    - MsgMarketOrder
-    comdex.liquidity.v1beta1.OrderDirection:
+    comdex.liquidity.v1beta1:
+      file: ./proto/comdex/liquidity/v1beta1/tx.proto
+      messages:
+        - MsgMarketOrder
+    comdex.liquidity.v1beta12:
       file: ./proto/comdex/liquidity/v1beta1/liquidity.proto
       messages:
-       - OrderDirection
+        - Order
+    cosmos.base.v1beta1:
+      file: ./proto/cosmos/base/v1beta1/coin.proto
+      messages:
+        - Coin
+    google.protobuf:
+      file: ./proto/google/protobuf/duration.proto
+      messages:
+        - Duration
+
 dataSources:
   - kind: cosmos/Runtime
     startBlock: 6781500
